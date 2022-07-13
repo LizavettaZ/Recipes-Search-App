@@ -1,0 +1,17 @@
+
+
+.Layout{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 18px 100px;
+}
+
+.Layout main{
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

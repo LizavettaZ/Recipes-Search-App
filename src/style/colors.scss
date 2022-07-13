@@ -1,0 +1,12 @@
+$color_bg: #E9FAFF;
+$color_accent: #FF7A00;
+$color_focus: #FFE8FF;
+$color_black: #000000;
+$color_white: #FFFFFF;
+$color_focus_55: rgba(255, 232, 255, 0.55);
+$color_menu_bg: rgba(255, 255, 255, 0.71);
+
+
+%menu_shadow{
+  box-shadow: 0px 7px 17px rgba(0, 0, 0, 0.16);
+}

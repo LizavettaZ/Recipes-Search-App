@@ -1,0 +1,14 @@
+@import "colors";
+@import "noneStyle";
+@import url('https://fonts.googleapis.com/css2?family=Imprima&family=Inria+Serif:wght@400;700&display=swap');
+
+*{
+  font-family: 'Imprima', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  background-color: $color_bg;
+  color: $color_black;
+}
+.App{
+  padding: 10px;
+}
