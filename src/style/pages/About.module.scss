@@ -1,0 +1,57 @@
+@import "src/style/adaptive";
+@import "src/style/windowWidth";
+@import "src/style/colors";
+
+.About{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px 0;
+  margin-bottom: 60px;
+
+  & h3 {
+    @include adaptive-value(font-size, 96, 50, 1);
+    @include adaptive-value(margin-bottom, 200, 40, 1);
+  }
+  & p{
+    @include adaptive-value(font-size, 64, 25, 1);
+    background-color: transparent;
+  }
+}
+
+.about__step{
+  display: flex;
+  align-items: center;
+  gap: 0 10px;
+
+  .step__img{
+    flex: 0 1 50%;
+  }
+
+  .step__text{
+    flex: 0 1 50%;
+  }
+}
+
+
+.about__step_last{
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  @include adaptive-value(height, 400, 150, 1);
+  background-image: url("../../img/about/bg search.png");
+  background-size: contain;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+
+  & p{
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 6px 10px 14px rgba(0, 0, 0, 0.49);
+    border-radius: 50px;
+    @include adaptive-value(padding-right, 56, 20, 1);
+    @include adaptive-value(padding-left, 56, 20, 1);
+    @include adaptive-value(padding-top, 15, 10, 1);
+    @include adaptive-value(padding-bottom, 15, 10, 1);
+  }
+}
