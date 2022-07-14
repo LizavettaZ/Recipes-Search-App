@@ -1,0 +1,39 @@
+@import "src/style/adaptive";
+@import "src/style/windowWidth";
+@import "src/style/colors";
+
+.Alert{
+  display: flex;;
+  visibility: hidden;
+  width: 300px;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: $color_accent;
+  min-width: 250px;
+  border-radius: 50px;
+}
+
+.active{
+  visibility: visible;
+  transition: opacity 1s ease-out;
+
+  &:hover{
+    opacity: 0.7;
+  }
+}
+
+.btnClose{
+  background-color: inherit;
+  display: flex;
+  align-items: center;
+
+  & span{
+    background-color: inherit;
+    font-size: 30px;
+    line-height: 0;
+  }
+
+  &:hover{
+    cursor: pointer;
+  }
+}
