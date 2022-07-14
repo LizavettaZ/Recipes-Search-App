@@ -1,0 +1,138 @@
+@import "src/style/adaptive";
+@import "src/style/windowWidth";
+@import "src/style/colors";
+
+.NavMenu{
+  height: 78px;
+  display: flex;
+  flex-direction: row;
+  background: $color_menu_bg;
+  border-radius: 50px;
+  @extend %menu_shadow;
+  padding: 18px 46px;
+  justify-content: space-between;
+  margin-bottom: 121px;
+  min-width: 300px;
+}
+
+.NavMenu_list{
+  background: transparent;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0 55px;
+
+  @media screen and (max-width: $middleWidth){
+    position: fixed;
+    width:100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    transform: translateY(-200%);
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px 0;
+    transition: transform 0.5s;
+    background: inherit;
+    z-index: 100;
+  }
+
+  @media screen and (max-width: $minWidth){
+    transform: translateY(-100%);
+    background: $color_bg;
+  }
+}
+
+.active{
+  transform: translateY(0);
+}
+
+.list__item{
+  position: relative;
+  background: inherit;
+  white-space: nowrap;
+  @include adaptive-value(font-size, 36, 26, 1);
+  @include adaptive-value(line-height, 42, 32, 1);
+
+  @media screen and (max-width: $minWidth){
+    @include adaptive-value(font-size, 20, 36, 1);
+    @include adaptive-value(line-height, 22,42, 1);
+  }
+
+  & a{
+    background: inherit;
+
+    &:hover{
+      padding: 5px 14px;
+      background-color: $color_focus;
+      border-radius: 50px;
+    }
+  }
+}
+
+//.selected{
+//  background-color: $color_focus;
+//}
+
+.NavMenu__icons{
+  white-space: nowrap;
+  background: inherit;
+
+  & a{
+    background: transparent;
+
+    & img{
+      height: 100%;
+      background: inherit;
+    }
+  }
+
+  & a:first-child{
+    @include adaptive-value(margin-left, 40, 10, 1);
+    @include adaptive-value(margin-right, 40, 10, 1);
+
+    @media screen and (max-width: $minWidth){
+      display: none;
+    }
+  }
+}
+
+.BurgerMenu{
+  background: inherit;
+  display: none;
+  position: relative;
+  width: 50px;
+  height: 100%;
+  text-align: center;
+
+  & span{
+    position: absolute;
+    top: 19px;
+    width: inherit;
+    height: 4px;
+    background-color: $color_black;
+  }
+
+  @media screen and (max-width: $middleWidth){
+    display: flex;
+  }
+}
+
+.BurgerMenu:before{
+  content: '';
+  position: absolute;
+  top: 0;
+  width: inherit;
+  height: 4px;
+  background-color: $color_black;
+}
+
+.BurgerMenu:after{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: inherit;
+  height: 4px;
+  background-color: $color_black;
+}
+
