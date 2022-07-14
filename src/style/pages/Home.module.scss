@@ -1,0 +1,42 @@
+@import "src/style/adaptive";
+@import "src/style/windowWidth";
+@import "src/style/colors";
+
+.Home{
+  display: flex;
+  flex: 0 0 100%;
+  align-items: center;
+
+  @media screen and (max-width: $middleWidth){
+    flex-wrap: wrap-reverse;
+    align-items: center;
+    gap: 10px 0;
+  }
+}
+
+.home__pictures{
+  flex: 0 1 70%;
+
+  @media screen and (max-width: $middleWidth){
+    flex: 0 1 100%;
+  }
+}
+
+.home__content{
+  flex: 0 1 30%;
+
+  & h3{
+    @include adaptive-value(font-size, 75, 20, 1);
+  }
+
+  & p{
+    @include adaptive-value(font-size, 40, 14, 1);
+    @include adaptive-value(margin-top, 13, 10, 1);
+    @include adaptive-value(margin-bottom, 100, 20, 1);
+  }
+
+  @media screen and (max-width: $middleWidth){
+    flex: 0 1 100%;
+    z-index: 2;
+  }
+}
