@@ -2,9 +2,9 @@
 @import "src/style/windowWidth";
 
 .Layout{
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   text-align: center;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -15,5 +15,4 @@
 .Layout main{
   display: flex;
   flex-direction: column;
-  align-items: center;
 }

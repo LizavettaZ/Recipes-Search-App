@@ -1,8 +1,8 @@
-import { OPEN_HOME, OPEN_ABOUT, OPEN_SEARCH, OPEN_MY_RECIPES, OPEN_AUTH } from '../actions/actionTypes'
+import { OPEN_HOME, OPEN_ABOUT, OPEN_SEARCH, OPEN_MY_RECIPES, OPEN_AUTH, OPEN_RECIPE } from '../actions/actionTypes'
 
 
 const initialState = {
-  background: '#E9FAFF',
+  background: '#E9FAFF'
 }
 
 export const layoutReducer = (state = initialState, action) => {
@@ -17,6 +17,8 @@ export const layoutReducer = (state = initialState, action) => {
       return {...state, background: '#FFFAFF'}
     case OPEN_AUTH:
       return {...state, background: '#FFFFFF'}
+    case OPEN_RECIPE:
+      return {...state, background: '#F8FDFF'}
     default:
       return state
   }
