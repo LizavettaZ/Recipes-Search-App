@@ -3,13 +3,30 @@
 @import "src/style/colors";
 
 .Search{
-  background-color: #FFFDFA;
-  width: 100vw;
-  height: 100vh;
 
   & h3{
     @include adaptive-value(font-size, 96, 50, 1);
-    @include adaptive-value(margin-bottom, 200, 40, 1);
+    @include adaptive-value(margin-bottom, 84, 40, 1);
+  }
+}
+
+.search__content{
+  @include adaptive-value(margin-top, 84, 40, 1);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+}
+
+.recipe{
+  flex: 0 0 550px;
+  height: 550px;
+
+  @media screen and (max-width: $middleWidth){
+    flex: 0 1 80%;
   }
 
+  @media screen and (max-width: $minWidth){
+    flex: 0 1 100%;
+  }
 }
