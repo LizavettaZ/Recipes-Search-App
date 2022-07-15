@@ -16,3 +16,15 @@ $color_my_recipes_bg: #FFFAFF;
 %btn_shadow{
   box-shadow: 3px 6px 20px rgba(0, 0, 0, 0.25);
 }
+
+%double_shadow{
+  border-radius: 50px;
+  border: 5px solid $color_black;
+  filter: drop-shadow(8px 8px 4px $color_search_bg) drop-shadow(3px 3px 0px $color_black);
+}
+
+%recipe_shadow{
+  border-radius: 50px;
+  border: 5px solid $color_accent;
+  filter: drop-shadow(8px 8px 4px $color_search_bg) drop-shadow(3px 3px 0px $color_accent);
+}

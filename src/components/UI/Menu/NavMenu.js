@@ -29,17 +29,17 @@ const NavMenu = () => {
             <NavLink to="/about"> about </NavLink>
           </li>
           <li className={classes.list__item}>
-            <NavLink to= "/search"> search </NavLink>
+            <NavLink to="/search"> search </NavLink>
           </li>
           <li className={classes.list__item}>
-            <NavLink to = "/my recipes"> my recipes </NavLink>
+            <NavLink to="/my_recipes"> my recipes </NavLink>
           </li>
         </ul>
         <div className={classes.NavMenu__icons}>
           <NavLink to="/">
             <img src={Logo} alt="Ri"/>
           </NavLink>
-          <NavLink to= "/profile" className={classes.list__item}>
+          <NavLink to="/profile" className={classes.list__item}>
             <img src={User} alt="Personal Area"/>
           </NavLink>
         </div>

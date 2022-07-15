@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import classes from '../../style/components/SearchForm.module.scss'
+import classes from '../style/components/SearchForm.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
-import { hide, show } from '../../store/actions/alert'
-import Alert from './Menu/Alert'
-import { search } from '../../store/actions/search'
+import { hide, show } from '../store/actions/alert'
+import Alert from './UI/Menu/Alert'
+import { search } from '../store/actions/search'
 
 
 const SearchForm = () => {

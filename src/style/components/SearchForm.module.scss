@@ -11,7 +11,7 @@
 }
 
 .search_form__input{
-  width: 50%;
+  width: 90%;
   min-width: 210px;
   color: $color_accent;
   @include adaptive-value(font-size, 36, 20, 1);
@@ -20,9 +20,7 @@
   @include adaptive-value(padding-top, 33, 10, 1);
   @include adaptive-value(padding-bottom, 33, 10, 1);
   background: $color_white;
-  border-radius: 50px;
-  border: 5px solid $color_black;
-  filter: drop-shadow(8px 8px 4px $color_search_bg) drop-shadow(3px 3px 0px $color_black);
+  @extend %double_shadow;
 
   &:focus, :active{
     background-color: $color_focus;

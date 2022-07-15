@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { useEffect }  from 'react'
 import classes from '../style/pages/About.module.scss'
 import Food from '../img/about/Group 32.png'
 import SearchBar from '../img/about/search bar 1.png'
-import f from '../img/about/bg search.png'
+import { useDispatch } from 'react-redux'
+import { changeBg } from '../store/actions/layout'
 
 
 const About = () => {
+  const dispatch = useDispatch()
+
+  useEffect(() => {dispatch(changeBg('about'))}, [])
+
   return (
     <div className={classes.About}>
       <h3>How it works</h3>
