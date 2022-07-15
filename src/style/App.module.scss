@@ -6,9 +6,14 @@
   font-family: 'Imprima', sans-serif;
   font-style: normal;
   font-weight: 400;
-  background-color: $color_bg;
+  background-color: transparent;
   color: $color_black;
 }
 .App{
-  padding: 10px;
+  height: 100vh;
+}
+
+h3{
+  font-family: 'Inria Serif', sans-serif;
+  background-color: initial;
 }

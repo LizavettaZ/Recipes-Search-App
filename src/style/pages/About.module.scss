@@ -7,12 +7,12 @@
   flex-direction: column;
   justify-content: center;
   gap: 40px 0;
-  margin-bottom: 60px;
 
   & h3 {
     @include adaptive-value(font-size, 96, 50, 1);
     @include adaptive-value(margin-bottom, 200, 40, 1);
   }
+
   & p{
     @include adaptive-value(font-size, 64, 25, 1);
     background-color: transparent;
@@ -32,7 +32,6 @@
     flex: 0 1 50%;
   }
 }
-
 
 .about__step_last{
   align-items: center;

@@ -1,16 +1,18 @@
-
+@import "src/style/adaptive";
+@import "src/style/windowWidth";
 
 .Layout{
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 18px 100px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  @include adaptive-value(padding-right, 100, 20, 1);
+  @include adaptive-value(padding-left, 100, 20, 1);
 }
 
 .Layout main{
-  flex-grow: 1;
   display: flex;
   flex-direction: column;
   align-items: center;

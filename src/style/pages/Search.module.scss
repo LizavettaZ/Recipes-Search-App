@@ -1,0 +1,15 @@
+@import "src/style/adaptive";
+@import "src/style/windowWidth";
+@import "src/style/colors";
+
+.Search{
+  background-color: #FFFDFA;
+  width: 100vw;
+  height: 100vh;
+
+  & h3{
+    @include adaptive-value(font-size, 96, 50, 1);
+    @include adaptive-value(margin-bottom, 200, 40, 1);
+  }
+
+}

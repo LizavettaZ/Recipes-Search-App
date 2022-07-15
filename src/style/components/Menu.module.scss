@@ -11,7 +11,7 @@
   @extend %menu_shadow;
   padding: 18px 46px;
   justify-content: space-between;
-  margin-bottom: 121px;
+  @include adaptive-value(margin-bottom, 121, 50, 1);
   min-width: 300px;
 }
 
@@ -49,7 +49,7 @@
 
 .list__item{
   position: relative;
-  background: inherit;
+  background: transparent;
   white-space: nowrap;
   @include adaptive-value(font-size, 36, 26, 1);
   @include adaptive-value(line-height, 42, 32, 1);
