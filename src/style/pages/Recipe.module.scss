@@ -1,0 +1,147 @@
+@import "src/style/adaptive";
+@import "src/style/windowWidth";
+@import "src/style/colors";
+
+.Recipe{
+  display: flex;
+  flex-direction: column;
+  gap: 80px 0;
+  position: relative;
+
+  h3{
+    @include adaptive-value(font-size, 64, 34, 1);
+    @include adaptive-value(margin-bottom, 40, 20, 1);
+  }
+
+  @media screen and (max-width: $middleWidth){
+    gap: 50px 0;
+  }
+}
+
+.recipe__arrow{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 0 10px;
+  top: -40px;
+
+  @media screen and (max-width: $minWidth){
+    top: -30px;
+  }
+}
+
+.recipe__first_part{
+  display: flex;
+  gap: 70px;
+
+  @media screen and (max-width: $middleWidth){
+    flex-direction: column;
+    text-align: center;
+    gap: 20px 0;
+  }
+}
+
+.first_part__img{
+  flex: 0 1 50%;
+
+  & img{
+    min-width: 300px;
+    @extend %recipe_shadow;
+  }
+}
+
+.first_part__info{
+  flex: 0 1 50%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @media screen and (max-width: $middleWidth){
+    align-items: center;
+    text-align: center;
+  }
+
+  span{
+    color: $color_accent;
+    @include adaptive-value(font-size, 40, 20, 1);
+  }
+
+  .info__params{
+    display: flex;
+    gap: 0 20px;
+
+    & p{
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      border: 5px solid $color_accent;
+      border-radius: 40px;
+      padding: 20px;
+      @include adaptive-value(margin-bottom, 20, 10, 1);
+    }
+  }
+
+  .info__types{
+    & p{
+      @include adaptive-value(font-size, 30, 16, 1);
+
+      &:nth-child(2n){
+        @include adaptive-value(margin-top, 20, 10, 1);
+        @include adaptive-value(margin-bottom, 20, 10, 1);
+      }
+    }
+  }
+}
+
+.recipe__second_part{
+  display: flex;
+  gap: 70px;
+  text-align: left;
+
+  @media screen and (max-width: $middleWidth){
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+}
+
+.second_part__ingredients{
+  flex: 0 1 50%;
+
+  @media screen and (max-width: $middleWidth){
+    flex: 0 1 100%;
+  }
+
+   & p{
+     @include adaptive-value(font-size, 20, 25, 1);
+
+     &:nth-child(2n + 1){
+       margin: 10px 0;
+     }
+   }
+}
+
+.second_part__preparation{
+  flex: 0 1 50%;
+
+  @media screen and (max-width: $middleWidth){
+    flex: 0 1 100%;
+  }
+
+  & a{
+    color: $color_accent;
+    @include adaptive-value(font-size, 70, 40, 1);
+    cursor: pointer;
+
+    &:hover{
+      opacity: 50%;
+      text-decoration: underline;
+    }
+
+    &:active{
+      opacity: 100%;
+      filter: drop-shadow(4px 4px 2px $color_search_bg) drop-shadow(3px 3px 0px $color_accent);
+    }
+  }
+}
