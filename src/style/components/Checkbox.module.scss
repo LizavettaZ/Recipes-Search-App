@@ -1,0 +1,47 @@
+@import "src/style/adaptive";
+@import "src/style/windowWidth";
+@import "src/style/colors";
+
+.Checkbox{
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.Checkbox+label {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+}
+
+.Checkbox+label::before {
+  content: '';
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex: 0 0 1em;
+  border: 2px solid $color_black;
+  border-radius: 50px;
+  margin-right: 0.5em;
+  background-color: $color_focus;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 80% 80%;
+}
+
+.Checkbox:checked+label::before{
+  background-image: url("../../img/icons/checked.svg");
+}
+
+.Checkbox:not(:disabled):not(:checked)+label:hover::before{
+  border-color: $color_accent;
+}
+
+.Checkbox:not(:disabled):active+label::before{
+  background-image: url("../../img/icons/checked.svg");
+  opacity: 50%;
+}
+
+.Checkbox:disabled+label::before {
+  background-color: $color_focus;
+}
