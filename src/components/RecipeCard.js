@@ -27,13 +27,13 @@ const RecipeCard = ({ recipe }) => {
           { info.map((item, index) => (
             <div className={classes.card__text} key={Date.now() + index}>
               <h4>{Object.values(item)}</h4>
-            <span>{Object.keys(item)}</span>
+              <span>{Object.keys(item)}</span>
             </div>
           )) }
         </div>
      </div>
       <div className={classes.recipe__info}>
-        <p><strong>{totalTime}</strong>&nbsp;min</p>
+        { !!totalTime && <p><strong>{totalTime}</strong>&nbsp;min</p> }
         <p>Cuisine:&nbsp;<strong>{cuisineType}</strong></p>
       </div>
     </div>

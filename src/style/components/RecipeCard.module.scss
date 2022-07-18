@@ -35,7 +35,7 @@
   border: 5px solid $color_accent;
   border-radius: 167.5px;
   overflow: hidden;
-
+  display: flex;
   width: 300px;
   height: 300px;
   margin-bottom: 10px;
@@ -70,6 +70,10 @@
   justify-content: center;
   gap: 0 30px;
   align-items: end;
+
+  @media screen and (max-width: $minWidth){
+    flex-wrap: wrap;
+  }
 
   & p{
     @include adaptive-value(font-size, 32, 28, 1);

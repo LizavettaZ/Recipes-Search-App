@@ -3,8 +3,7 @@
 @import "src/style/colors";
 
 .Search{
-
-  & h3{
+  & h2{
     @include adaptive-value(font-size, 96, 50, 1);
     @include adaptive-value(margin-bottom, 84, 40, 1);
   }
@@ -28,5 +27,26 @@
 
   @media screen and (max-width: $minWidth){
     flex: 0 1 100%;
+    min-width: 700px;
+  }
+}
+
+.more{
+  @include adaptive-value(font-size, 36, 20, 1);
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover{
+    opacity: 70%;
+
+    & p{
+      color: $color_accent;
+    }
+  }
+  &:active{
+    opacity: 100%;
   }
 }

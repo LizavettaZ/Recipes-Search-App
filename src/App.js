@@ -5,6 +5,8 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import About from './pages/About'
 import Search from './pages/Search'
 import Recipe from './pages/Recipe'
+import MyRecipes from './pages/MyRecipes'
+import Auth from './pages/Auth'
 
 
 function App() {
@@ -15,6 +17,8 @@ function App() {
         <Route path='/search' element={<Search/>}/>
         <Route path='/about' element={<About/>}/>
         <Route path='/recipe/:label' element={<Recipe/>}/>
+        <Route path='/my_recipes' element={<MyRecipes/>}/>
+        <Route path='/auth' element={<Auth/>}/>
         <Route path='/redirect' element={<Navigate to='/' />}/>
       </Routes>
     </Layout>

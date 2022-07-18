@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/UI/Loader'
 import { changeBg } from '../store/actions/layout'
 import RecipeCard from '../components/RecipeCard'
+import ShowMore from '../components/ShowMore'
 
 
 const Search = () => {
@@ -17,7 +18,7 @@ const Search = () => {
 
   return (
     <div className={classes.Search}>
-      <h3>Search for a recipe!</h3>
+      <h2>Search for a recipe!</h2>
       <SearchForm/>
         { loading
           ? <Loader/>
@@ -33,6 +34,7 @@ const Search = () => {
               )) }
           </div>
         }
+      {!notFound && <ShowMore/>}
     </div>
   )
 }
