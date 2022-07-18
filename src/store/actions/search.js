@@ -1,4 +1,4 @@
-import { GET_ERROR, GET_LINKS, GET_RECIPES, NOT_FOUND, SET_LOADING } from './actionTypes'
+import { GET_ERROR, GET_LINKS, GET_RECIPES, GET_RECIPES_MORE, NOT_FOUND, SET_LOADING } from './actionTypes'
 import axios from 'axios'
 import { API, app_id, app_key } from '../../API/API'
 
@@ -9,10 +9,9 @@ export const search = (value) => {
     try {
       const response = await axios.get(`${API}type=any&q=${value}&app_id=${app_id}&app_key=${app_key}`)
 
-      console.log(response)
       dispatch(getRecipes(response.data.hits))
 
-      response.data.count > 20 && dispatch(getLinks(response.data._links))
+      response.data.count > 20 && dispatch(getLinks(response.data._links.next.href, true))
 
       !!response.data.count ? dispatch(notFoundAnime(false)) : dispatch(notFoundAnime(true))
 
@@ -20,6 +19,22 @@ export const search = (value) => {
     } catch (e) {
       dispatch(getError(e))
       dispatch(setLoading(false))
+    }
+  }
+}
+
+export const RecipesMore = (link) => {
+  return async dispatch => {
+    try {
+      const response = await axios.get(link)
+
+      dispatch(getRecipesMore(response.data.hits))
+      response.data.count !== response.data.to
+        ? dispatch(getLinks(response.data._links.next.href, true))
+        : dispatch(getLinks(null, false))
+
+    } catch (e) {
+      dispatch(getError(e))
     }
   }
 }
@@ -42,13 +57,17 @@ const getRecipes = (recipes) => {
   }
 }
 
-const getLinks = (link) => {
+const getRecipesMore = (recipes) => {
   return {
-    type: GET_LINKS,
-    link: link
+    type: GET_RECIPES_MORE,
+    nextRecipes: recipes
   }
 }
 
-const getRecipesMore = () => {
-
+const getLinks = (link, isMore) => {
+  return {
+    type: GET_LINKS,
+    showMore: link,
+    isMore: isMore
+  }
 }

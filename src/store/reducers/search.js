@@ -10,8 +10,8 @@ import {
 
 const initialState = {
   recipes: [],
-  links: {},
-  isLinks: false,
+  showMore: {},
+  isMore: false,
   loading: false,
   error: null,
   notFound: false
@@ -26,13 +26,13 @@ export const searchReducer = (state = initialState, action) => {
     case GET_ERROR:
       return { ...state, error: action.error }
     case CLEAR_RECIPES:
-      return { ...state, recipes: [] }
+      return { ...state, recipes: [], isMore: false }
     case GET_RECIPES:
       return { ...state, recipes: action.recipes }
     case GET_RECIPES_MORE:
-      return { ...state, recipes: [...state.recipes, action.recipes] }
+      return { ...state, recipes: [...state.recipes, ...action.nextRecipes] }
     case GET_LINKS:
-      return { ...state, links: action.link, isLinks: true }
+      return { ...state, showMore: action.showMore, isMore: action.isMore }
     default:
       return state
   }
