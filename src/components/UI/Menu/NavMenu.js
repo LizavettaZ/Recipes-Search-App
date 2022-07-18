@@ -39,7 +39,7 @@ const NavMenu = () => {
           <NavLink to="/">
             <img src={Logo} alt="Ri"/>
           </NavLink>
-          <NavLink to="/profile" className={classes.list__item}>
+          <NavLink to="/auth" className={classes.list__item}>
             <img src={User} alt="Personal Area"/>
           </NavLink>
         </div>

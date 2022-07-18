@@ -1,0 +1,31 @@
+@import "src/style/adaptive";
+@import "src/style/windowWidth";
+@import "src/style/colors";
+
+.MyRecipes{
+  & h2{
+    @include adaptive-value(font-size, 96, 50, 1);
+    @include adaptive-value(margin-bottom, 84, 40, 1);
+    color: $color_accent;
+  }
+}
+
+.my_recipes__list{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+}
+
+.my_recipe{
+  flex: 0 0 550px;
+  height: 550px;
+
+  @media screen and (max-width: $middleWidth){
+    flex: 0 1 80%;
+  }
+
+  @media screen and (max-width: $minWidth){
+    flex: 0 1 100%;
+  }
+}
