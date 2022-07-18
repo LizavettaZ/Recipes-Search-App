@@ -1,0 +1,134 @@
+@import "src/style/colors";
+
+.arrow_left span{
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-bottom: 3px solid $color_accent;
+  border-left: 3px solid $color_accent;
+
+  margin: -2px;
+  animation: arrow_left 1s infinite;
+  float: left;
+}
+.arrow_left span:nth-child(2){
+  animation-delay: -0.1s;
+}
+.arrow_left span:nth-child(3){
+  animation-delay: -0.2s;
+}
+@keyframes arrow_left {
+  0%{
+    opacity: 0;
+    transform: rotate(45deg) translate(-0px,-0px);
+  }
+  50%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+    transform: rotate(45deg) translate(0px,0px);
+  }
+}
+
+
+.arrow_down{
+  display: flex;
+  flex-direction: column-reverse;
+}
+.arrow_down span{
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-bottom: 5px solid $color_accent;
+  border-left: 5px solid $color_accent;
+
+  margin: -2px;
+  animation: arrow_down 1s infinite;
+  float: left;
+}
+.arrow_down span:nth-child(2){
+  animation-delay: -0.1s;
+}
+.arrow_down span:nth-child(3){
+  animation-delay: -0.2s;
+}
+@keyframes arrow_down {
+  0%{
+    opacity: 0;
+    transform: rotate(-45deg) translate(-0px,-0px);
+  }
+  50%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+    transform: rotate(-45deg) translate(0px,0px);
+  }
+}
+
+.arrow_up{
+  display: flex;
+  flex-direction: column;
+}
+.arrow_up span{
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-bottom: 5px solid $color_accent;
+  border-left: 5px solid $color_accent;
+
+  margin: -2px;
+  animation: arrow_up 1s infinite;
+  float: left;
+}
+.arrow_up span:nth-child(2){
+  animation-delay: -0.1s;
+}
+.arrow_up span:nth-child(3){
+  animation-delay: -0.2s;
+}
+@keyframes arrow_up {
+  0%{
+    opacity: 0;
+    transform: rotate(135deg) translate(-0px,-0px);
+  }
+  50%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+    transform: rotate(135deg) translate(0px,0px);
+  }
+}
+
+.arrow_right span{
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-bottom: 5px solid $color_accent;
+  border-left: 5px solid $color_accent;
+
+  margin: -2px;
+  animation: arrow_right 1s infinite;
+  float: left;
+}
+.arrow_right span:nth-child(2){
+  animation-delay: -0.1s;
+}
+.arrow_right span:nth-child(3){
+  animation-delay: -0.2s;
+}
+@keyframes arrow_right {
+  0%{
+    opacity: 0;
+    transform: rotate(-135deg) translate(-0px,-0px);
+  }
+  50%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+    transform: rotate(-135deg) translate(0px,0px);
+  }
+}
