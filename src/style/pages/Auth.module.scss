@@ -5,3 +5,22 @@
 .Auth{
 
 }
+
+.auth__form{
+
+
+}
+
+.form__inputs{
+  @include adaptive-value(margin-bottom, 200, 60, 1);
+}
+
+.form__btns{
+  display: flex;
+  justify-content: center;
+  gap: 25px 35px;
+
+  @media screen and (max-width: $minWidth){
+    flex-wrap: wrap;
+  }
+}
