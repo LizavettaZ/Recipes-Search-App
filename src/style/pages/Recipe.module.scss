@@ -67,6 +67,25 @@
     @include adaptive-value(font-size, 40, 20, 1);
   }
 
+  .info__save{
+    display: flex;
+    align-items: center;
+    gap: 0 10px;
+    @include adaptive-value(font-size, 50, 30, 1);
+    margin-bottom: 20px;
+
+    & img{
+      @include adaptive-value(height, 60, 40, 1);
+      cursor: pointer;
+    }
+
+    & .save{
+      p{
+        color: $color_accent;
+      }
+    }
+  }
+
   .info__params{
     display: flex;
     gap: 0 20px;
@@ -145,3 +164,5 @@
     }
   }
 }
+
+
