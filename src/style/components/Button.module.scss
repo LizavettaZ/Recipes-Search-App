@@ -4,7 +4,6 @@
 
 %style_btn_hover{
   background-color: $color_accent;
-  box-shadow: rgba(0, 0, 0, 0.4) 0 2px 4px, rgba(0, 0, 0, 0.3) 0 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 %style_btn_active{
@@ -13,26 +12,43 @@
 }
 
 .Button{
-  white-space: nowrap;
-  color: $color_white;
-  margin-top: 20px;
-}
-
-.button__link{
-  @include adaptive-value(font-size, 64, 14, 1);
-  @include adaptive-value(padding-right, 52, 20, 1);
-  @include adaptive-value(padding-left, 52, 20, 1);
-  @include adaptive-value(padding-top, 17, 10, 1);
-  @include adaptive-value(padding-bottom, 17, 10, 1);
-  background-color: $color_accent;
-  @extend %btn_shadow;
+  width: 50%;
+  min-width: 240px;
   border-radius: 50px;
+  white-space: nowrap;
+  @include adaptive-value(font-size, 64, 20, 1);
+  @include adaptive-value(padding-top, 17, 10, 1);
+  @include adaptive-value(padding-bottom,17, 10, 1);
+  @extend %double_shadow;
+
+  @media screen and (max-width: $minWidth){
+    width: 80%;
+    @include adaptive-value(font-size, 20, 35, 1);
+  }
 
   &:hover{
     @extend %style_btn_hover;
   }
 
   &:active{
-    @extend %style_btn_active
+    @extend %style_btn_active;
   }
+
+  &:disabled{
+    cursor: not-allowed;
+    color: $color_placeholder;
+    background: $color_menu_bg;
+  }
+}
+
+.success{
+  background: $color_bg;
+}
+
+.error{
+  background: $color_error;
+}
+
+.primary{
+  background: $color_focus;
 }

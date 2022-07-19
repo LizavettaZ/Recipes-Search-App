@@ -1,13 +1,21 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
 import classes from '../../style/components/Button.module.scss'
 
 
-const Button = ({ title = 'Get Started!', to = '/' } ) => {
+const Button = ({ children, ...props }) => {
+  const cls = [
+    classes.Button,
+    classes[props.type]
+  ]
+
   return (
-    <div className={classes.Button}>
-      <NavLink to={to} className={classes.button__link}>{title}</NavLink>
-    </div>
+    <button
+      onClick={props.onClick}
+      className={cls.join(' ')}
+      disabled={props.disabled}
+    >
+      {children}
+    </button>
   )
 }
 
