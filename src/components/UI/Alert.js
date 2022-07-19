@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
-import classes from '../../../style/components/Alert.module.scss'
+import classes from '../../style/components/Alert.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
-import { hide } from '../../../store/actions/alert'
+import { hide } from '../../store/actions/alert'
 
 
 const Alert = () => {

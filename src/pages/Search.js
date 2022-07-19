@@ -34,7 +34,7 @@ const Search = () => {
               )) }
           </div>
         }
-      {!notFound && <ShowMore/>}
+      {!notFound && recipes.length > 19 && <ShowMore/>}
     </div>
   )
 }
