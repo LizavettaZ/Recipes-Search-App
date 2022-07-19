@@ -1,0 +1,64 @@
+@import "src/style/adaptive";
+@import "src/style/windowWidth";
+@import "src/style/colors";
+
+.Input{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  @include adaptive-value(margin-bottom, 40, 35, 1);
+}
+
+.Input label{
+  & h3{
+    @include adaptive-value(font-size, 96, 50, 1);
+  }
+}
+
+.Input input{
+  border: 3px solid $color_black;
+  width: 70%;
+  min-width: 200px;
+  outline: none;
+  @include adaptive-value(font-size, 36, 20, 1);
+  @include adaptive-value(padding-right, 65, 20, 1);
+  @include adaptive-value(padding-left, 65, 20, 1);
+  @include adaptive-value(padding-top, 25, 10, 1);
+  @include adaptive-value(padding-bottom, 25, 10, 1);
+  background: $color_white;
+  @extend %double_shadow;
+
+  @media screen and (max-width: $minWidth){
+   width: 100%;
+  }
+
+  &:focus, :active{
+    background-color: $color_focus;
+    color: $color_black;
+  }
+
+  &:focus::placeholder{
+    color: $color_focus;
+  }
+
+  &::placeholder{
+    color: $color_placeholder;
+  }
+}
+
+.Input span{
+  position: absolute;
+  @include adaptive-value(bottom, -50, -36, 1);
+  left: 50%;
+  transform: translateX(-50%);
+  color: $color_error;
+  white-space: nowrap;
+  @include adaptive-value(font-size, 36, 20, 1);
+}
+
+.invalid input{
+  border: 3px solid $color_error;
+  border-radius: 50px;
+  filter: drop-shadow(8px 8px 4px $color_search_bg) drop-shadow(3px 3px 0px $color_error);
+}
