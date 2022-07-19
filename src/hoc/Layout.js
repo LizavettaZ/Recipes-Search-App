@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import classes from '../style/hoc/Layout.module.scss'
 import NavMenu from '../components/UI/Menu/NavMenu'
-import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux'
 
 
 const Layout = ({ children }) => {

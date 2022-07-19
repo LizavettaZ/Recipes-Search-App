@@ -22,9 +22,9 @@ export const changeBg = (page) => {
   }
 }
 
-const home = () => { return { type: OPEN_HOME} }
-const about = () => { return { type: OPEN_ABOUT} }
-const search = () => { return { type: OPEN_SEARCH} }
-const myRecipes = () => { return { type: OPEN_MY_RECIPES} }
-const auth = () => { return { type: OPEN_AUTH} }
-const recipe = () => { return { type: OPEN_RECIPE} }
+const home = () => { return { type: OPEN_HOME }}
+const about = () => { return { type: OPEN_ABOUT }}
+const search = () => { return { type: OPEN_SEARCH }}
+const myRecipes = () => { return { type: OPEN_MY_RECIPES }}
+const auth = () => { return { type: OPEN_AUTH }}
+const recipe = () => { return { type: OPEN_RECIPE }}

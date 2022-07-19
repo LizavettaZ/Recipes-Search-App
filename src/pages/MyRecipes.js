@@ -7,7 +7,7 @@ import { changeBg } from '../store/actions/layout'
 
 const MyRecipes = () => {
   const loading = useSelector(state => state.search.loading)
-  const recipes = useSelector(state => state.search.recipes)
+  const favorite = useSelector(state => state.favorite.favorite)
   const dispatch = useDispatch()
 
   useEffect(() => {dispatch(changeBg('myRecipes'))}, [])
@@ -18,10 +18,10 @@ const MyRecipes = () => {
       { loading
         ? <Loader/>
         : <div className={classes.my_recipes__list}>
-          {recipes.map((recipe, index) => (
+          {favorite.map((recipe, index) => (
             <div className = {classes.my_recipe} key = {Date.now() + index}>
               <RecipeCard
-                recipe = {recipe.recipe}
+                recipe={recipe}
               />
             </div>
           )) }

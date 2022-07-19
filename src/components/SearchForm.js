@@ -3,7 +3,7 @@ import classes from '../style/components/SearchForm.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { hide, show } from '../store/actions/alert'
 import Alert from './UI/Alert'
-import { search } from '../store/actions/search'
+import { clearList, search } from '../store/actions/search'
 
 
 const SearchForm = () => {
@@ -18,6 +18,7 @@ const SearchForm = () => {
       dispatch(hide())
       dispatch(search(value))
     } else {
+      dispatch(clearList())
       dispatch(show('Enter product name'))
     }
   }
