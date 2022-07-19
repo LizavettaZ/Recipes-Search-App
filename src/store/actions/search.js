@@ -1,6 +1,14 @@
-import { GET_ERROR, GET_LINKS, GET_RECIPES, GET_RECIPES_MORE, NOT_FOUND, SET_LOADING } from './actionTypes'
+import {
+  CLEAR_RECIPES,
+  GET_ERROR,
+  GET_LINKS,
+  GET_RECIPES,
+  GET_RECIPES_MORE,
+  NOT_FOUND,
+  SET_LOADING
+} from './actionTypes'
 import axios from 'axios'
-import { API, app_id, app_key } from '../../API/API'
+import { API, app_id, app_key } from '../../API/search'
 
 
 export const search = (value) => {
@@ -38,6 +46,8 @@ export const RecipesMore = (link) => {
     }
   }
 }
+
+export const clearList = () => {return { type: CLEAR_RECIPES }}
 
 const setLoading = (payload) => {return { type: SET_LOADING, loading: payload }}
 
