@@ -20,7 +20,6 @@ export const search = (value) => {
       dispatch(getRecipes(response.data.hits))
 
       response.data.count > 20 && dispatch(getLinks(response.data._links.next.href, true))
-
       !!response.data.count ? dispatch(notFoundAnime(false)) : dispatch(notFoundAnime(true))
 
       dispatch(setLoading(false))

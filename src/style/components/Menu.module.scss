@@ -16,7 +16,6 @@
 }
 
 .NavMenu_list{
-  background: transparent;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -49,7 +48,6 @@
 
 .list__item{
   position: relative;
-  background: transparent;
   white-space: nowrap;
   @include adaptive-value(font-size, 36, 26, 1);
   @include adaptive-value(line-height, 42, 32, 1);
@@ -60,8 +58,6 @@
   }
 
   & a{
-    background: inherit;
-
     &:hover{
       padding: 5px 14px;
       background-color: $color_focus;
@@ -70,20 +66,12 @@
   }
 }
 
-//.selected{
-//  background-color: $color_focus;
-//}
-
 .NavMenu__icons{
   white-space: nowrap;
-  background: inherit;
 
   & a{
-    background: transparent;
-
     & img{
       height: 100%;
-      background: inherit;
     }
   }
 
@@ -98,7 +86,6 @@
 }
 
 .BurgerMenu{
-  background: inherit;
   display: none;
   position: relative;
   width: 50px;
@@ -134,5 +121,15 @@
   width: inherit;
   height: 4px;
   background-color: $color_black;
+}
+
+.auth {
+  pointer-events: none;
+
+  & img {
+    background: rgba(254, 222, 255, 0.53);
+    border-radius: 50px;
+    padding: 1px 14px;
+  }
 }
 

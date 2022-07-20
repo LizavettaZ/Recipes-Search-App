@@ -49,3 +49,7 @@
     opacity: 100%;
   }
 }
+
+.not_found{
+  @include adaptive-value(font-size, 100, 40, 1);
+}

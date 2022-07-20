@@ -24,7 +24,7 @@ const Search = () => {
           ? <Loader/>
           : <div className={classes.search__content}>
             { notFound
-              ? <div>No found</div>
+              ? <div className={classes.not_found}>No found...</div>
               : recipes.map((recipe, index) => (
                 <div className = {classes.recipe} key = {Date.now() + index}>
                   <RecipeCard

@@ -8,6 +8,10 @@
     @include adaptive-value(margin-bottom, 84, 40, 1);
     color: $color_accent;
   }
+
+  & h5{
+    @include adaptive-value(font-size, 100, 40, 1);
+  }
 }
 
 .my_recipes__list{

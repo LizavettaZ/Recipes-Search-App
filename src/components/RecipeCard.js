@@ -20,7 +20,7 @@ const RecipeCard = ({ recipe }) => {
             <img src={images.REGULAR.url} alt='Food picture'/>
           </div>
           <Link to={'/recipe/:' + label} >
-            <h3>{label}</h3>
+            <h3>{label.length > 50 ? label.substring(0, 50)+ ' ...' : label}</h3>
           </Link>
         </div>
         <div className={classes.card__info}>
