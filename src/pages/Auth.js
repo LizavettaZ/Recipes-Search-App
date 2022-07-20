@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import classes from '../style/pages/Auth.module.scss'
 import { changeBg } from '../store/actions/layout'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Input from '../components/UI/Input'
 import Button from '../components/UI/Button'
 import { validateControl } from '../utilities/InputValidation'
 import { auth } from '../store/actions/auth'
+import { getFavorite } from '../store/actions/favorite'
+import Alert from '../components/UI/Alert'
+import { hide, show } from '../store/actions/alert'
 
 
 const submitHandler = (event) => {
@@ -13,6 +16,9 @@ const submitHandler = (event) => {
 }
 
 const Auth = () => {
+  const success = useSelector(state => !!state.auth.token)
+  const error = useSelector(state => state.auth.error)
+  const id = useSelector(state => state.auth.UserId)
   const dispatch = useDispatch()
   const [email, setEmail] = useState({
     value: '',
@@ -43,10 +49,18 @@ const Auth = () => {
 
   const loginHandler =  () => {
     dispatch(auth(email.value, password.value, true))
+    errorAlert('User will not find. Try again!')
+
+    success && dispatch(getFavorite(id))
   }
 
   const checkInHandler =  () => {
     dispatch(auth(email.value, password.value, false))
+    errorAlert('This email is already in use')
+  }
+
+  const errorAlert = (text) => {
+    error && dispatch(show(text)) && setTimeout(() => dispatch(hide()), 2000)
   }
 
   const onChangeHandler = (event, changingState) => {
@@ -63,46 +77,50 @@ const Auth = () => {
 
   return (
     <div className={classes.Auth}>
-      <form onSubmit={submitHandler} className={classes.auth__form}>
-        <div className={classes.form__inputs}>
-          <Input
-            label={email.label}
-            type={email.type}
-            value={email.value}
-            valid={email.valid}
-            touched={email.touched}
-            errorMessage={email.errorMessage}
-            shouldValidate={!!email.validation}
-            onChange={event => onChangeHandler(event, email)}
-          />
-          <Input
-            label= {password.label}
-            type= {password.type}
-            value={password.value}
-            valid={password.valid}
-            touched={password.touched}
-            errorMessage={password.errorMessage}
-            shouldValidate={!!password.validation}
-            onChange={event => onChangeHandler(event, password)}
-          />
-        </div>
-        <div className={classes.form__btns}>
-          <Button
-            type='success'
-            onClick={loginHandler}
-            disabled={!(password.valid && email.valid)}
-          >
-            Enter
-          </Button>
-          <Button
-            type='primary'
-            onClick={checkInHandler}
-            disabled={!(password.valid && email.valid)}
-          >
-            Create Profile!
-          </Button>
-        </div>
-      </form>
+      { success
+        ? <h1>Welcome!</h1>
+        : <form onSubmit={submitHandler} className={classes.auth__form}>
+          <Alert/>
+            <div className={classes.form__inputs}>
+            <Input
+              label={email.label}
+              type={email.type}
+              value={email.value}
+              valid={email.valid}
+              touched={email.touched}
+              errorMessage={email.errorMessage}
+              shouldValidate={!!email.validation}
+              onChange={event => onChangeHandler(event, email)}
+            />
+            <Input
+              label= {password.label}
+              type= {password.type}
+              value={password.value}
+              valid={password.valid}
+              touched={password.touched}
+              errorMessage={password.errorMessage}
+              shouldValidate={!!password.validation}
+              onChange={event => onChangeHandler(event, password)}
+            />
+          </div>
+            <div className={classes.form__btns}>
+            <Button
+              type='success'
+              onClick={loginHandler}
+              disabled={!(password.valid && email.valid)}
+            >
+              Enter
+            </Button>
+            <Button
+              type='primary'
+              onClick={checkInHandler}
+              disabled={!(password.valid && email.valid)}
+            >
+              Create Profile!
+            </Button>
+          </div>
+          </form>
+      }
     </div>
   )
 }
