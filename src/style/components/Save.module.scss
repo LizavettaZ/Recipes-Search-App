@@ -1,0 +1,24 @@
+@import "src/style/adaptive";
+@import "src/style/windowWidth";
+@import "src/style/colors";
+
+.Save, .Save div{
+  display: flex;
+  align-items: center;
+  gap: 0 10px;
+  @include adaptive-value(font-size, 50, 30, 1);
+  margin-bottom: 20px;
+
+  & img {
+    @include adaptive-value(height, 60, 40, 1);
+    cursor: pointer;
+  }
+}
+
+.selected{
+  opacity: 50%;
+  pointer-events: none;
+}
+.selected p{
+  color: $color_accent;
+}
