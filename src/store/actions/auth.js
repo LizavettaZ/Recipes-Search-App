@@ -1,5 +1,7 @@
-import axios from 'axios';
-import { AUTH_LOGOUT, AUTH_SUCCESS, SAVE_USER_ID } from './actionTypes'
+import axios from 'axios'
+import { AUTH_LOGOUT, AUTH_SUCCESS } from './actionTypes'
+import { getFavorite } from './favorite'
+
 
 const API = 'AIzaSyCb5gDF89FXWxUb5Qp6KXdBhWrkR2O-orY'
 
@@ -15,34 +17,31 @@ export const auth = (email, password, isLogin) => {
       const response = await axios.post(url + `${API}`,
         {'email':`${email}`, 'password':`${password}`, 'returnSecureToken': true})
 
-      console.log(response)
-      console.log(response.data.localId)
+      dispatch(getFavorite(response.data.localId))
 
-      dispatch(saveUserId(response.data.localId))
+      const expirationDate = new Date(new Date().getTime() + response.data.expiresIn * 1000)
 
-      // const expirationDate = new Date(new Date().getTime() + response.data.expiresIn * 1000)
-      //
-      // localStorage.setItem('token', response.data.idToken)
-      // localStorage.setItem('userId', response.data.localId)
-      // localStorage.setItem('expirationDate', expirationDate)
-      //
-      // dispatch(authSuccess(response.data.idToken))
-      // dispatch(autoLogout(response.data.response.data.expiresIn))
-    } catch (e) {
+      localStorage.setItem('token', response.data.idToken)
+      localStorage.setItem('userId', response.data.localId)
+      localStorage.setItem('expirationDate', expirationDate)
+
+      dispatch(authSuccess(response.data.idToken))
+      dispatch(autoLogout(response.data.expiresIn))
+    }
+    catch (e) {
       console.log(e)
     }
-
   }
 }
 
-export const authSuccess = (token) => {
+const authSuccess = (token) => {
   return {
     type: AUTH_SUCCESS,
     token
   }
 }
 
-export const autoLogout = (time) => {
+const autoLogout = (time) => {
   return dispatch => {
     setTimeout(() => {
       dispatch(logout())
@@ -60,10 +59,23 @@ export const logout = () => {
   }
 }
 
-const saveUserId = (id) => {
-  return {
-    type: SAVE_USER_ID,
-    id: id
-  }
+export const authLogin = () => {
+  return async dispatch => {
+    const token = localStorage.getItem('token')
+    const UserId = localStorage.getItem('userId')
 
+    if (!token) {
+      dispatch(logout())
+    } else {
+      const expirationDate = new Date(localStorage.getItem('expirationDate'))
+
+      if (expirationDate <= new Date()) {
+        dispatch(logout())
+      } else {
+        dispatch(authSuccess(token))
+        dispatch(getFavorite(UserId))
+        autoLogout((expirationDate.getTime() - new Date().getTime() / 1000))
+      }
+    }
+  }
 }
