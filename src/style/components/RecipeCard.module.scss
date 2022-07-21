@@ -39,6 +39,8 @@
   width: 300px;
   height: 300px;
   margin-bottom: 10px;
+  align-items: center;
+  justify-content: center;
 
   @media screen and (max-width: $middleWidth){
     @include adaptive-value(width, 300, 250, 1);
