@@ -6,9 +6,9 @@ import Input from '../components/UI/Input'
 import Button from '../components/UI/Button'
 import { validateControl } from '../utilities/InputValidation'
 import { auth } from '../store/actions/auth'
-import { getFavorite } from '../store/actions/favorite'
 import Alert from '../components/UI/Alert'
 import { hide, show } from '../store/actions/alert'
+import { Link } from 'react-router-dom'
 
 
 const submitHandler = (event) => {
@@ -16,9 +16,7 @@ const submitHandler = (event) => {
 }
 
 const Auth = () => {
-  const success = useSelector(state => !!state.auth.token)
-  const error = useSelector(state => state.auth.error)
-  const id = useSelector(state => state.auth.UserId)
+  const isAuthenticated = useSelector(state => !!state.auth.token)
   const dispatch = useDispatch()
   const [email, setEmail] = useState({
     value: '',
@@ -45,22 +43,26 @@ const Auth = () => {
     }
   })
 
-  useEffect(() => {dispatch(changeBg('auth'))}, [])
+  useEffect(() => {
+    dispatch(changeBg('auth'))
+    dispatch(hide())
+  }, [])
 
   const loginHandler =  () => {
     dispatch(auth(email.value, password.value, true))
-    errorAlert('User will not find. Try again!')
-
-    success && dispatch(getFavorite(id))
+    setTimeout(() => errorAlert('User will not find. Try again!'), 1000)
   }
 
   const checkInHandler =  () => {
     dispatch(auth(email.value, password.value, false))
-    errorAlert('This email is already in use')
+    setTimeout(() => errorAlert('This email is already in use'), 1000)
   }
 
   const errorAlert = (text) => {
-    error && dispatch(show(text)) && setTimeout(() => dispatch(hide()), 2000)
+    if (!isAuthenticated) {
+      dispatch(show(text))
+      setTimeout(() => dispatch(hide()), 2000)
+    }
   }
 
   const onChangeHandler = (event, changingState) => {
@@ -77,8 +79,8 @@ const Auth = () => {
 
   return (
     <div className={classes.Auth}>
-      { success
-        ? <h1>Welcome!</h1>
+      { isAuthenticated
+        ? <Link to={'/search'}><h1>Welcome!</h1></Link>
         : <form onSubmit={submitHandler} className={classes.auth__form}>
           <Alert/>
             <div className={classes.form__inputs}>
