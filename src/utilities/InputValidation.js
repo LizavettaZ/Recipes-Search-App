@@ -11,9 +11,7 @@ export const validateEmail = (email) => {
 }
 
 export function validateControl (value, validation) {
-  if (!validation) {
-    return true
-  }
+  if (!validation) return true
 
   let isValid = true
 

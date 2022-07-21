@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from 'react-redux'
 
 const Save = ({ recipe }) => {
   const favorite = useSelector(state => state.favorite.favorite)
-  const id = useSelector(state => state.auth.UserId)
   const dispatch = useDispatch()
   const [save, setSave] = useState(false)
 
@@ -23,7 +22,7 @@ const Save = ({ recipe }) => {
   const addFavorite = () => {
     setSave(true)
     dispatch(saveRecipe(recipe))
-    dispatch(postFavorite(recipe, id))
+    dispatch(postFavorite(recipe))
   }
 
   return (

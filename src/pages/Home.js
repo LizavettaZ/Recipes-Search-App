@@ -8,7 +8,7 @@ import { changeBg } from '../store/actions/layout'
 const Home = () => {
   const dispatch = useDispatch()
 
-  useEffect(() => {dispatch(changeBg('about'))}, [])
+  useEffect(() => {dispatch(changeBg('home'))}, [])
 
   return (
     <div className={classes.Home}>

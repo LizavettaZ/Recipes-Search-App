@@ -26,9 +26,9 @@ const Search = () => {
             { notFound
               ? <div className={classes.not_found}>No found...</div>
               : recipes.map((recipe, index) => (
-                <div className = {classes.recipe} key = {Date.now() + index}>
+                <div className={classes.recipe} key={Date.now() + index}>
                   <RecipeCard
-                    recipe = {recipe.recipe}
+                    recipe={recipe.recipe}
                   />
                 </div>
               )) }

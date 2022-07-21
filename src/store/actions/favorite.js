@@ -2,7 +2,9 @@ import { ADD_FAVORITE_RECIPE, GET_FAVORITE_RECIPES } from './actionTypes'
 import axios from '../../API/favorite'
 
 
-export const postFavorite = (recipe, id) => {
+export const postFavorite = (recipe) => {
+  const id = localStorage.getItem('userId')
+
   return async dispatch => {
     try {
       await axios.post(`/${id}.json`, recipe)

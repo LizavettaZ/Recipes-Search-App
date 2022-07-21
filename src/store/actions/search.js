@@ -23,7 +23,8 @@ export const search = (value) => {
       !!response.data.count ? dispatch(notFoundAnime(false)) : dispatch(notFoundAnime(true))
 
       dispatch(setLoading(false))
-    } catch (e) {
+    }
+    catch (e) {
       dispatch(getError(e))
       dispatch(setLoading(false))
     }
@@ -40,7 +41,8 @@ export const RecipesMore = (link) => {
         ? dispatch(getLinks(response.data._links.next.href, true))
         : dispatch(getLinks(null, false))
 
-    } catch (e) {
+    }
+    catch (e) {
       dispatch(getError(e))
     }
   }

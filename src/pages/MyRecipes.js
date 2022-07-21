@@ -4,6 +4,7 @@ import Loader from '../components/UI/Loader'
 import RecipeCard from '../components/RecipeCard'
 import { useDispatch, useSelector } from 'react-redux'
 import { changeBg } from '../store/actions/layout'
+import { Link } from 'react-router-dom'
 
 
 const MyRecipes = () => {
@@ -17,7 +18,7 @@ const MyRecipes = () => {
     <div className={classes.MyRecipes}>
       <h2>My Recipes...</h2>
       { !favorite.length
-        ? <h5>Add recipes to favorites...</h5>
+        ? <Link to={'/search'}><h5>Add recipes to favorites...</h5></Link>
         : loading
           ? <Loader/>
           : <div className={classes.my_recipes__list}>
