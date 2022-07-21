@@ -1,4 +1,4 @@
-import React, { useEffect }  from 'react'
+import React, { useEffect } from 'react'
 import { changeBg } from '../store/actions/layout'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
@@ -7,14 +7,21 @@ import Checkbox from '../components/UI/Checkbox'
 import Arrow from '../components/UI/Arrow'
 import Save from '../components/Save'
 import { useNavigate } from "react-router-dom"
+import { withErrorBoundary } from 'react-error-boundary'
+import NotFound from './NotFound'
 
 
 const Recipe = () => {
   const label = useParams().label.slice(1)
-  const { recipe } = useSelector(state => state.search.recipes).find(item => item.recipe.label === label)
+  let recipe
+  const recipeSave  = useSelector(state => state.favorite.favorite).find(item => item.label === label)
+  const recipeSearch  = useSelector(state => state.search.recipes).find(item => item.recipe.label === label)
+
+  recipeSave !== undefined ? recipe = recipeSave : recipe = recipeSearch.recipe
+
   const isAuthenticated = useSelector(state => !!state.auth.token)
-  const {calories, mealType, dishType, cuisineType, images, ingredientLines, source,
-    totalTime, totalWeight, url, ingredients} = recipe
+  const { calories, mealType, dishType, cuisineType, images, ingredientLines, source,
+    totalTime, totalWeight, url, ingredients } = recipe
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -37,9 +44,7 @@ const Recipe = () => {
     label, ingredients
   }
 
-  useEffect(() => {
-    dispatch(changeBg('recipe'))
-  }, [])
+  useEffect(() => {dispatch(changeBg('recipe'))}, [])
 
   return (
     <div className={classes.Recipe}>
@@ -93,4 +98,4 @@ const Recipe = () => {
   )
 }
 
-export default Recipe
+export default withErrorBoundary(Recipe, {fallback: <NotFound/>})
