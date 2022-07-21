@@ -1,0 +1,28 @@
+@import "src/style/adaptive";
+@import "src/style/windowWidth";
+@import "src/style/colors";
+
+.NotFound{
+  & h1{
+    @include adaptive-value(font-size, 94, 44, 1);
+  }
+  & img{
+    @include adaptive-value(margin-top, 80, 40, 1);
+    @include adaptive-value(margin-bottom, 80, 40, 1);
+  }
+  & p{
+    font-style: italic;
+    @include adaptive-value(font-size, 34, 24, 1);
+  }
+
+  &:hover{
+    p{
+      color: $color_accent;
+    }
+  }
+  &:active{
+    p{
+      text-shadow: $color_accent 4px 0 20px;
+    }
+  }
+}
