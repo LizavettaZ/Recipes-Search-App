@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import classes from '../../style/components/Alert.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
-import { hide } from '../../store/actions/alert'
+import { hideAlert } from '../../store/actions/alert'
 
 
 const Alert = () => {
@@ -16,7 +16,7 @@ const Alert = () => {
   return (
     <div className={cls.join(' ')} role="alert">
       {alert.text}
-      <button type="button" className= {classes.btnClose} aria-label="Close" onClick={() => dispatch(hide())}>
+      <button type="button" className= {classes.btnClose} aria-label="Close" onClick={() => dispatch(hideAlert())}>
         <span aria-hidden="true">&times;</span>
       </button>
     </div>

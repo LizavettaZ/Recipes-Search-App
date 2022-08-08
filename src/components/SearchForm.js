@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import classes from '../style/components/SearchForm.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
-import { hide, show } from '../store/actions/alert'
+import { hideAlert, showAlert } from '../store/actions/alert'
 import Alert from './UI/Alert'
 import { clearList, search } from '../store/actions/search'
 
@@ -15,11 +15,11 @@ const SearchForm = () => {
     if (event.key !== 'Enter') return null
 
     if (value.trim()) {
-      dispatch(hide())
+      dispatch(hideAlert())
       dispatch(search(value))
     } else {
       dispatch(clearList())
-      dispatch(show('Enter product name'))
+      dispatch(showAlert('Enter product name'))
     }
   }
 
@@ -32,7 +32,7 @@ const SearchForm = () => {
         value={value}
         onChange={(event) => setValue(event.target.value)}
         onKeyPress={onSubmit}
-        onFocus={() => alertStatus && dispatch(hide())}
+        onFocus={() => alertStatus && dispatch(hideAlert())}
       />
       <Alert/>
     </div>

@@ -7,7 +7,7 @@ import Button from '../components/UI/Button'
 import { validateControl } from '../utilities/InputValidation'
 import { auth } from '../store/actions/auth'
 import Alert from '../components/UI/Alert'
-import { hide, show } from '../store/actions/alert'
+import { hideAlert, showAlert } from '../store/actions/alert'
 import { Link } from 'react-router-dom'
 
 
@@ -45,7 +45,7 @@ const Auth = () => {
 
   useEffect(() => {
     dispatch(changeBg('auth'))
-    dispatch(hide())
+    dispatch(hideAlert())
   }, [])
 
   const loginHandler =  () => {
@@ -60,8 +60,8 @@ const Auth = () => {
 
   const errorAlert = (text) => {
     if (!isAuthenticated) {
-      dispatch(show(text))
-      setTimeout(() => dispatch(hide()), 2000)
+      dispatch(showAlert(text))
+      setTimeout(() => dispatch(hideAlert()), 2000)
     }
   }
 
